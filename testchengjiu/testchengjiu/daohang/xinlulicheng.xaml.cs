@@ -75,5 +75,11 @@ namespace testchengjiu.daohang
             };
             proxy.DownloadStringAsync(new Uri("http://cxds.sysu.me/?a=getPost", UriKind.Absolute));
         }
+
+        private void HubTile_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            App.chengjiu_title = (((chengjiuxitong_hubtile)(((System.Windows.Controls.Primitives.Selector)(this.tileList)).SelectedValue)).Title);
+            NavigationService.Navigate(new Uri("/daohang/chengjiu_congtent.xaml", UriKind.Relative));
+        }
     }
 }

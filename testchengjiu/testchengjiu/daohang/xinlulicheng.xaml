@@ -67,7 +67,7 @@
 										 DisplayNotification="{Binding DisplayNotification}" 
 										 Message="{Binding Message}" 
 										 GroupTag="{Binding GroupTag}" Source="{Binding ImageUri}" Background="#FF1AFFFF" Opacity="1"
-                                                 Foreground="Black">
+                                                 Foreground="Black" Tap="HubTile_Tap">
                                 </toolkit:HubTile>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

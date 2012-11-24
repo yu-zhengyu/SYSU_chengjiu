@@ -138,5 +138,11 @@ namespace testchengjiu
         }
 
         #endregion
+
+        #region 全局变量
+
+        public static string chengjiu_title;
+
+        #endregion
     }
 }

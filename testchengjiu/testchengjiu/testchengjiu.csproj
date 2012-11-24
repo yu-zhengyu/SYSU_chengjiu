@@ -75,6 +75,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="daohang\chengjiu_congtent.xaml.cs">
+      <DependentUpon>chengjiu_congtent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="daohang\xinlulicheng.xaml.cs">
       <DependentUpon>xinlulicheng.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,7 @@
       <DependentUpon>weiboshouquan.xaml</DependentUpon>
     </Compile>
     <Compile Include="data\chengjiuxitong.cs" />
+    <Compile Include="data\chengjiu_detail.cs" />
     <Compile Include="data\user.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -99,6 +103,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="daohang\chengjiu_congtent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="daohang\xinlulicheng.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -131,6 +139,7 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\badguy_green.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
