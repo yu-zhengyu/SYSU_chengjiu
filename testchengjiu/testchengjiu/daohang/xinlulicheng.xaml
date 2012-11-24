@@ -1,0 +1,93 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="testchengjiu.daohang.chengjiuxitong"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True" xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
+
+    <!--LayoutRoot 是包含所有页面内容的根网格-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--枢轴控件-->
+        <controls:Pivot Title="我的应用程序">
+            <!--枢轴项一-->
+            <controls:PivotItem Header="心路历程">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="            2012         2011" FontSize="36" TextWrapping="Wrap"></TextBlock>
+                    </StackPanel>
+                    <ListBox Height="493" HorizontalAlignment="Left" Margin="0,6,0,0" Name="listBox_xinlu"  Width="460">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Orientation="Vertical" Background="White"  Height="60" Width="60" VerticalAlignment="Top">
+                                            
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical" Height="173" Width="173">
+                                            <toolkit:HubTile Height="173"  Foreground="Black" Title="{Binding posttime}" Message="{Binding content}" Name="hubTile1" Width="173" Background="AliceBlue" IsFrozen="False" DisplayNotification="False" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical" Background="Black"  Height="180" Width="6">
+                                            <TextBlock Text=" "></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical" Height="173" Width="173">
+                                            <toolkit:HubTile Height="173" Name="hubTile2" Width="173" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <TextBlock Text=" " Height="5"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    
+                </StackPanel>
+            </controls:PivotItem>
+
+            <!--枢轴项二-->
+            <controls:PivotItem Header="中大成就">
+                <StackPanel Orientation="Vertical">
+                    <ListBox Grid.Row="0" x:Name="tileList" Background="#0006FCFC" Foreground="Black" Opacity="2">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <toolkit:WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <toolkit:HubTile Title="{Binding Title}" Margin="3" 
+										 Notification="{Binding Notification}"
+										 DisplayNotification="{Binding DisplayNotification}" 
+										 Message="{Binding Message}" 
+										 GroupTag="{Binding GroupTag}" Source="{Binding ImageUri}" Background="#FF1AFFFF" Opacity="1"
+                                                 Foreground="Black">
+                                </toolkit:HubTile>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </StackPanel>
+            </controls:PivotItem>
+        </controls:Pivot>
+    </Grid>
+
+    <!--演示 ApplicationBar 用法的示例代码-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton x:Name="appbar_button1" IconUri="/Images/appbar_button1.png" Text="按钮 1"/>
+            <shell:ApplicationBarIconButton x:Name="appbar_button2" IconUri="/Images/appbar_button2.png" Text="按钮 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="menuItem1" Text="菜单项 1"/>
+                <shell:ApplicationBarMenuItem x:Name="menuItem2" Text="菜单项 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+    
+</phone:PhoneApplicationPage>
