@@ -21,7 +21,7 @@ namespace testchengjiu.daohang
             
             InitializeComponent();
             get_chengjiu_list();
-            PageTitle.Text = App.chengjiu_title;
+            PageTitle.Text = App.chengjiu_title + "成就";
 
         }
 
@@ -30,15 +30,30 @@ namespace testchengjiu.daohang
             List<chengjiu_detail> detail = new List<chengjiu_detail>()
             {
                 
-                new chengjiu_detail{Image="", meassage="fasfsdfsadfaeawfawef"},
-                new chengjiu_detail{Image="", meassage="fasdfasfsadfsadfsdf"},
-                new chengjiu_detail{Image="", meassage="adfasdfasfdasdfasdfsadfasf"},
-                new chengjiu_detail{Image="", meassage="asdfasfdasfdasdf"},
-                new chengjiu_detail{Image="", meassage="asfdasdfasdfasfd"},
-                new chengjiu_detail{Image="", meassage="asdfasfdasdfasdfasfasfa"}
+                new chengjiu_detail{Image="", meassage="三饭大王", isdone="/testchengjiu;component/Images/isdone.png"},
+                new chengjiu_detail{Image="", meassage="君臣侠", isdone="/testchengjiu;component/Images/isdone.png"},
+                new chengjiu_detail{Image="", meassage="咖啡厅老客户", isdone="/testchengjiu;component/Images/isdone.png"},
+                new chengjiu_detail{Image="", meassage="清真大王", isdone=""},
+                new chengjiu_detail{Image="", meassage="真。食堂的托", isdone=""},
+                new chengjiu_detail{Image="", meassage="衣食无忧", isdone=""}
             };
 
             listbox_chengjiu.ItemsSource = detail;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var a = ((chengjiu_detail)(((System.Windows.Controls.Primitives.Selector)(this.listbox_chengjiu)).SelectedItem)).meassage;
+            int i = 0;
+            //string a = this.listbox_chengjiu.SelectedItem.ToString();
+            //this.listbox_chengjiu.SelectedItem
+            
+        }
+
+        private void chengjiu_SP_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            App.chengjiu_list = ((chengjiu_detail)(((System.Windows.Controls.Primitives.Selector)(this.listbox_chengjiu)).SelectedItem)).meassage;
+            NavigationService.Navigate(new Uri("/daohang/chengjiu_info.xaml", UriKind.Relative));
         }
     }
 }

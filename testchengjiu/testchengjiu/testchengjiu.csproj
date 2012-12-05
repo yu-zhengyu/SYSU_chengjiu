@@ -25,6 +25,8 @@
     <SilverlightAppEntry>testchengjiu.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.30816.0</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -78,8 +80,8 @@
     <Compile Include="daohang\chengjiu_congtent.xaml.cs">
       <DependentUpon>chengjiu_congtent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="daohang\xinlulicheng.xaml.cs">
-      <DependentUpon>xinlulicheng.xaml</DependentUpon>
+    <Compile Include="daohang\chengjiu_info.xaml.cs">
+      <DependentUpon>chengjiu_info.xaml</DependentUpon>
     </Compile>
     <Compile Include="daohang\denglujiemian.xaml.cs">
       <DependentUpon>denglujiemian.xaml</DependentUpon>
@@ -90,9 +92,19 @@
     <Compile Include="daohang\weiboshouquan.xaml.cs">
       <DependentUpon>weiboshouquan.xaml</DependentUpon>
     </Compile>
+    <Compile Include="daohang\pinglun.xaml.cs">
+      <DependentUpon>pinglun.xaml</DependentUpon>
+    </Compile>
     <Compile Include="data\chengjiuxitong.cs" />
     <Compile Include="data\chengjiu_detail.cs" />
+    <Compile Include="data\chengjiu_infomation.cs" />
+    <Compile Include="data\DataGetter.cs" />
+    <Compile Include="data\fuguang_data.cs" />
+    <Compile Include="data\Test.cs" />
     <Compile Include="data\user.cs" />
+    <Compile Include="main.xaml.cs">
+      <DependentUpon>main.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -107,7 +119,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="daohang\xinlulicheng.xaml">
+    <Page Include="daohang\chengjiu_info.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -123,12 +135,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="daohang\pinglun.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="font\叶根友特楷简体.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
   </ItemGroup>
@@ -140,6 +163,27 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="Images\badguy_green.png" />
+    <Resource Include="Images\isdone.png" />
+    <Resource Include="Images\背景.jpg" />
+    <Resource Include="Images\weibo.png" />
+    <Resource Include="Images\renren.png" />
+    <Resource Include="Images\book.jpg" />
+    <Resource Include="Images\food.jpg" />
+    <Resource Include="Images\movie.jpg" />
+    <Resource Include="Images\path.jpg" />
+    <Resource Include="Images\young.jpg" />
+    <Resource Include="Images\book1.jpg" />
+    <Resource Include="Images\background.jpg" />
+    <Resource Include="Images\fantang.png" />
+    <Content Include="icons\appbar.add.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\appbar.feature.search.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icons\appbar.upload.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />

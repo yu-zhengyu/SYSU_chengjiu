@@ -11,7 +11,30 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True" xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
+
+
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
 
     <!--LayoutRoot 是包含所有页面内容的根网格-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -29,16 +52,25 @@
         <!--ContentPanel - 在此处放置其他内容-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel Orientation="Vertical">
-                <ListBox Height="493" HorizontalAlignment="Left" Margin="0,6,0,0" Name="listbox_chengjiu"  Width="460">
+                <ListBox Height="605" HorizontalAlignment="Left" Margin="0,6,0,0" Name="listbox_chengjiu"  Width="460">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Width="90" Source="/testchengjiu;component/Images/badguy_green.png"></Image>
-                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left">
-                                        <TextBlock FontSize="35" Width="300" Text="{Binding meassage}" TextWrapping="Wrap"></TextBlock>
+                            <StackPanel Width="400" Name="chengjiu_SP" Orientation="Vertical" Tap="chengjiu_SP_Tap" OpacityMask="Black" Margin="0,20,0,0">
+                                <!--<Button Name="chengjiu_button" BorderBrush="Transparent" Background="Transparent" Click="Button_Click">-->
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="90" Source="/testchengjiu;component/Images/badguy_green.png"></Image>
+                                        <StackPanel Name="chengjiu_mess" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                             <TextBlock Name="chengjiu_text" FontSize="35" Width="260" Text="{Binding meassage}" TextWrapping="Wrap"></TextBlock>
+                                         </StackPanel>
+                                        <Image Source="{Binding isdone}"></Image>
                                     </StackPanel>
-                                </StackPanel>
+                                <!--</Button>-->
+                                <StackPanel.Background>
+                                    <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                                        <GradientStop Color="#9254E3E3" Offset="0" />
+                                        <GradientStop Color="#BB4AD5D5" Offset="1" />
+                                    </LinearGradientBrush>
+                                </StackPanel.Background>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

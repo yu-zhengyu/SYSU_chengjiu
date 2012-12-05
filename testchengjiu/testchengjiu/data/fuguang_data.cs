@@ -11,10 +11,11 @@ using System.Windows.Shapes;
 
 namespace testchengjiu.data
 {
-    public class chengjiu_detail
+    public class fuguang_data
     {
-        public string meassage { get; set; }
-        public string Image { get; set; }
-        public string isdone { get; set; }
+        public string name { get; set; }
+        public string image { get; set; }
+        public string chengjiu { get; set; }
+        public string time { get; set; }
     }
 }

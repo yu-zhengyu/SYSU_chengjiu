@@ -28,8 +28,8 @@
 
         <!--ContentPanel - 在此处放置其他内容-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Button Content="注册" Height="72" HorizontalAlignment="Left" Margin="134,210,0,0" Name="zhuce" VerticalAlignment="Top" Width="160" />
-            <Button Content="登录" Height="72" HorizontalAlignment="Left" Margin="134,97,0,0" Name="denglu" VerticalAlignment="Top" Width="160" Click="denglu_Click" />
+            <Button Content="注册" Height="72" HorizontalAlignment="Left" Margin="254,397,0,0" Name="zhuce" VerticalAlignment="Top" Width="160" />
+            <Button Content="登录" Height="72" HorizontalAlignment="Left" Margin="49,397,0,0" Name="denglu" VerticalAlignment="Top" Width="160" Click="denglu_Click" />
         </Grid>
     </Grid>
  

@@ -1,0 +1,148 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="testchengjiu.main"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True" xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+    <Grid x:Name="LayoutRoot">
+        <controls:Panorama>
+            <controls:Panorama.Background>
+                <ImageBrush ImageSource="/testchengjiu;component/Images/背景.jpg" Opacity="5" />
+            </controls:Panorama.Background>
+            <controls:Panorama.Title>
+                <TextBlock Text="中大成就系统" FontSize="60" Margin="0,80,0,0" Height="75"></TextBlock>
+            </controls:Panorama.Title>
+            <!--Panorama 心路历程-->
+            <controls:PanoramaItem>
+                <controls:PanoramaItem.Header>
+                    <TextBlock Text="心路历程" FontSize="60" Margin="0,10,0,0" Height="60" FontFamily="font/叶根友特楷简体.ttf#叶根友特楷简体"></TextBlock>
+                </controls:PanoramaItem.Header>
+                <StackPanel Orientation="Vertical" Height="522">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="          2012                    2011" FontSize="25" TextWrapping="Wrap"></TextBlock>
+                    </StackPanel>
+                    <ListBox Height="479" HorizontalAlignment="Left" Margin="0,6,0,0" Name="listBox_xinlu"  Width="460">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Background="#82F0F8FF" Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Orientation="Vertical" Height="173" Width="173">
+                                            <toolkit:HubTile Height="173"  Foreground="Black" Title="{Binding posttime}" Message="{Binding content}" Name="hub2012" Width="173" Background="{Binding color1}" IsFrozen="False" DisplayNotification="False" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical" Height="180" Width="6">
+                                            <TextBlock Text=" "><TextBlock.Foreground><SolidColorBrush /></TextBlock.Foreground></TextBlock>
+                                            <StackPanel.Background>
+                                                <SolidColorBrush />
+                                            </StackPanel.Background>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical" Height="173" Width="173">
+                                            <toolkit:HubTile Height="173"  Foreground="Black" Title="{Binding posttime}" Message="{Binding content}" Name="hub2011" Width="173" Background="{Binding color2}" IsFrozen="False" DisplayNotification="False" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <TextBlock Text=" " Height="5"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </StackPanel>
+            </controls:PanoramaItem>
+
+            <!--Panorama 时光脚步-->
+            <controls:PanoramaItem>
+                <controls:PanoramaItem.Header>
+                    <TextBlock  FontFamily="font/叶根友特楷简体.ttf#叶根友特楷简体" Text="时光脚印" FontSize="60" Margin="0,10,0,0" Height="60"></TextBlock>
+                </controls:PanoramaItem.Header>
+                <StackPanel Orientation="Vertical">
+                    <ListBox Grid.Row="0" x:Name="tileList" Background="#0006FCFC" Foreground="Black" Opacity="2" Height="524">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <toolkit:WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <toolkit:HubTile Title="{Binding Title}" Margin="3" 
+										 Notification="{Binding Notification}"
+										 DisplayNotification="{Binding DisplayNotification}" 
+										 Message="{Binding Message}" 
+										 GroupTag="{Binding GroupTag}" Source="{Binding ImageUri}" Opacity="1" Tap="HubTile_Tap" OpacityMask="{x:Null}" IsEnabled="True" BorderBrush="{x:Null}" Foreground="White" Background="#FF77BABA">
+                                </toolkit:HubTile>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </controls:PanoramaItem>
+            <!--Panorama 浮光掠影一-->
+            <controls:PanoramaItem >
+                <controls:PanoramaItem.Header>
+                    <TextBlock  FontFamily="font/叶根友特楷简体.ttf#叶根友特楷简体" Text="浮光掠影" FontSize="60" Margin="0,10,0,0" Height="60"></TextBlock>
+                </controls:PanoramaItem.Header>
+                <StackPanel Orientation="Vertical">
+                    <ListBox Height="493" HorizontalAlignment="Left" Margin="0,6,0,0" Name="fuguanglueying"  Width="460">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="70" Height="70" Source="{Binding image}" HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0,0,0,68"></Image>
+                                    <Button Width="380" BorderBrush="Transparent" OpacityMask="{x:Null}">
+                                        <StackPanel Orientation="Horizontal" Width="380">
+                                            <StackPanel Width="320" Orientation="Vertical" Background="#7B31A9C0">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding name}" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Top"></TextBlock>
+                                                    <StackPanel Width="150" HorizontalAlignment="Right" VerticalAlignment="Top"></StackPanel>
+                                                    <TextBlock Text="{Binding time}" FontSize="15" Margin="0" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+                                                </StackPanel>
+                                                <TextBlock FontSize="20" Width="260" Text="{Binding chengjiu}" TextWrapping="Wrap" Foreground="White"></TextBlock>
+                                                <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="5" Content="评论" Click="Button_Click"></Button>
+                                            </StackPanel>                                          
+                                        </StackPanel>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </controls:PanoramaItem>
+        </controls:Panorama>
+       
+    </Grid>
+
+    <!--基于 Panorama 的应用程序不应显示 ApplicationBar-->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton x:Name="focus_appbar" IconUri="/icons/appbar.upload.rest.png" Text="置顶" Click="focus_appbar_Click"/>
+            <shell:ApplicationBarIconButton x:Name="add_appbar" IconUri="/icons/appbar.add.rest.png" Text="添加好友"/>
+            <shell:ApplicationBarIconButton x:Name="look_appbar" IconUri="/icons/appbar.feature.search.rest.png" Text="查看好友"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>

@@ -19,5 +19,7 @@ namespace testchengjiu.data
         public string posttime { get; set; }
         public string reply_count { get; set; }
         public string source { get; set; }
+        public string color1 { get; set; }
+        public string color2 { get; set; }
     }
 }

@@ -32,6 +32,8 @@ namespace testchengjiu.daohang
 
         private void denglu_Click(object sender, RoutedEventArgs e)
         {
+            this.progressBar1.IsIndeterminate = true;
+            this.progressBar1.Visibility = System.Windows.Visibility.Visible;
             weibolongin(yonghu_textBox.Text, password_box.Password);
         }
 
@@ -39,20 +41,48 @@ namespace testchengjiu.daohang
         void weibolongin(string user, string password)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("username", "user");
-            parameters.Add("password", "123456");
+            parameters.Add("username", "8785169");
+            parameters.Add("password", "8785169");
             PostClient proxy = new PostClient(parameters);
             proxy.DownloadStringCompleted += (sender, e) =>
             {
                 if (e.Error == null)
                 {
-                    JObject userobj = JObject.Parse(e.Result);
-                    if(userobj["info"].ToString() == "登录成功")
-                        NavigationService.Navigate(new Uri("/daohang/xinlulicheng.xaml", UriKind.Relative));
+                    if (e.Result == "")
+                    {
+                        MessageBox.Show("亲，你的网络可能有问题了。");
+                        this.progressBar1.IsIndeterminate = false;
+                    }
+                    else
+                    {
+                        try {
+                            JObject userobj = JObject.Parse(e.Result);
+                            if (userobj["info"].ToString() == "success")
+                            {
+                                this.progressBar1.IsIndeterminate = false;
+                                this.progressBar1.Visibility = System.Windows.Visibility.Collapsed;
+                                //if (((JObject)((JObject)userobj["detail"])["detail"]).ToString() == "[]")
+                                //{
+                                NavigationService.Navigate(new Uri("/main.xaml", UriKind.Relative));
+                                //}
+                                //else
+                                //{
+                                //    NavigationService.Navigate(new Uri("/main.xaml", UriKind.Relative));
+                                //}
+                             }
+                        }
+                        catch 
+                        {
+                            MessageBox.Show("亲，你的网络可能有问题了。");
+
+                            this.progressBar1.IsIndeterminate = false;
+                            this.progressBar1.Visibility = System.Windows.Visibility.Collapsed;
+                        }
+                    }
                 }
 
             };
-            proxy.DownloadStringAsync(new Uri("http://cxds.sysu.me/?a=login", UriKind.Absolute));
+            proxy.DownloadStringAsync(new Uri("http://cxds.sysu.me/user/login", UriKind.Absolute));
         }
 
     }
