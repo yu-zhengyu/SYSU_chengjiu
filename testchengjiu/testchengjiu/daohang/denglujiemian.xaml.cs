@@ -27,7 +27,7 @@ namespace testchengjiu.daohang
 
         private void reset_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new Uri("/daohang/login.xaml", UriKind.Relative));
         }
 
         private void denglu_Click(object sender, RoutedEventArgs e)
@@ -63,13 +63,19 @@ namespace testchengjiu.daohang
                                 this.progressBar1.Visibility = System.Windows.Visibility.Collapsed;
                                 //if (((JObject)((JObject)userobj["detail"])["detail"]).ToString() == "[]")
                                 //{
-                                NavigationService.Navigate(new Uri("/main.xaml", UriKind.Relative));
+                                NavigationService.Navigate(new Uri("/daohang/weiboshouquan.xaml", UriKind.Relative));
                                 //}
                                 //else
                                 //{
                                 //    NavigationService.Navigate(new Uri("/main.xaml", UriKind.Relative));
                                 //}
-                             }
+                            }
+                            else
+                            {
+                                this.progressBar1.IsIndeterminate = false;
+                                this.progressBar1.Visibility = System.Windows.Visibility.Collapsed;
+                                MessageBox.Show("用户名或密码错误");
+                            }
                         }
                         catch 
                         {

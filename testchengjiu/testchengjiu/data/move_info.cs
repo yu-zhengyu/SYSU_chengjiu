@@ -11,12 +11,13 @@ using System.Windows.Shapes;
 
 namespace testchengjiu.data
 {
-    public class chengjiu_detail
+    public class move_info
     {
-
-        public string meassage { get; set; }
-        public string Image { get; set; }
-        public string isdone { get; set; }
-        public string outline { set; get; }
+        public string image { get; set; }
+        public string outline { get; set; }
+        public bool isdone = false;
+        public string friend1 { set; get; }
+        public string friend2 { set; get; }
+        public string friend3 { set; get; }
     }
 }

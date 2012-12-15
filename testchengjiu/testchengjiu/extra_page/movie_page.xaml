@@ -1,5 +1,5 @@
 ﻿<phone:PhoneApplicationPage 
-    x:Class="testchengjiu.daohang.weiboshouquan"
+    x:Class="testchengjiu.extra_page.movie_page"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
@@ -11,7 +11,7 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="True" xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
+     shell:SystemTray.IsVisible="True" xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
 
     <toolkit:TransitionService.NavigationInTransition>
         <toolkit:NavigationInTransition>
@@ -33,7 +33,7 @@
             </toolkit:NavigationOutTransition.Forward>
         </toolkit:NavigationOutTransition>
     </toolkit:TransitionService.NavigationOutTransition>
-    
+
     <!--LayoutRoot 是包含所有页面内容的根网格-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
@@ -44,25 +44,33 @@
         <!--TitlePanel 包含应用程序的名称和页标题-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="ApplicationTitle" Text="中大成就系统" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="授权页面" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock x:Name="PageTitle" Text="电影" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - 在此处放置其他内容-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            
-            <Button Height="95" HorizontalAlignment="Left" Margin="71,55,0,0" Name="weibo" VerticalAlignment="Top" Width="316" OpacityMask="Black" Click="weibo_Click">
-                <Button.Background>
-                    <ImageBrush ImageSource="/testchengjiu;component/Images/weibo.png" Stretch="Fill" />
-                </Button.Background>
-            </Button>
-            <Button Height="94" HorizontalAlignment="Left" Margin="71,213,0,0" Name="renren" VerticalAlignment="Top" Width="316" OpacityMask="Black" Click="renren_Click">
-                <Button.Background>
-                    <ImageBrush ImageSource="/testchengjiu;component/Images/renren.png" Stretch="UniformToFill" />
-                </Button.Background>
-            </Button>
-            <Button Content="进入" Height="72" HorizontalAlignment="Left" Margin="157,464,0,0" Name="Enter" VerticalAlignment="Top" Width="160" Click="Enter_Click" Visibility="Collapsed" />
-            <TextBlock Height="113" HorizontalAlignment="Left" Margin="58,345,0,0" Name="textBlock1" Text="现在你可以选择对另一款社交软件进行授权或者进入我们的应用开始中大成就的挑战" VerticalAlignment="Top" TextWrapping="Wrap" Width="350" FontWeight="Bold" FontFamily="Yu Gothic" Visibility="Collapsed" />
-            <Button Content="直接进入" Height="72" HorizontalAlignment="Left" Margin="138,409,0,0" Name="enter" VerticalAlignment="Top" Width="203" Click="enter_Click_1" />
+            <StackPanel Orientation="Vertical">
+                <ListBox Height="603">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Image Width="160" Source="/testchengjiu;component/Images/kenan.jpg" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,20,0"></Image>
+                            <TextBlock Name="outline" Width="220" TextWrapping="Wrap"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,20">
+                            <ToggleButton Name="wanted" Content="想看" Click="wanted_Click" IsThreeState="False" IsChecked="False"></ToggleButton>
+                            <TextBlock Width="60"></TextBlock>
+                            <ToggleButton Name="isdone" Content="看过" Click="isdone_Click"></ToggleButton>
+                        </StackPanel>
+                        
+                        <TextBlock Text="看过的朋友有：" Margin="0,0,0,10"></TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Name="friend1" Width="60"></Image>
+                            <Image Name="friend2" Width="60" Margin="40,0,0,0"></Image>
+                            <Image Name="friend3" Width="60" Margin="40,0,0,0"></Image>
+                        </StackPanel>
+                    </StackPanel>
+                </ListBox>
+            </StackPanel>
         </Grid>
     </Grid>
  

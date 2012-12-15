@@ -64,7 +64,7 @@
                                 <StackPanel Name="sta_list" Margin="0,10,0,0">
                                     <TextBlock Text="达成该成就的朋友:" Margin="0,20"></TextBlock>
                                     <StackPanel Name="stac_iamge" Orientation="Horizontal" Margin="0,0,0,15">
-                                        <Image Width="70" Height="70" Source="{Binding friend2}"></Image>
+                                        <Image Width="70" Height="70" Source="{Binding friend1}"></Image>
                                         <Image Width="30"></Image>
                                         <Image Width="70" Height="70" Source="{Binding friend2}"></Image>
                                         <Image Width="30"></Image>

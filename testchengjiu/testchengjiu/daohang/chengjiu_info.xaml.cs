@@ -27,7 +27,8 @@ namespace testchengjiu.daohang
         {
             List<chengjiu_infomation> info = new List<chengjiu_infomation>()
             {
-                new chengjiu_infomation{ message="中山大学第三饭堂，汇聚了广东所有美食的精髓。", image = "/testchengjiu;component/Images/fantang.png", friend1="http://tp4.sinaimg.cn/1849017127/50/40002000245/1", friend2="http://tp4.sinaimg.cn/1849017127/50/40002000245/1", friend3="http://tp4.sinaimg.cn/1849017127/50/40002000245/1", info="在三饭用餐  10 / 50"}
+
+                new chengjiu_infomation{ message="折翼天使:  我们都是折翼的天使， 只有拥抱才能一起飞翔！！～～", image = "/testchengjiu;component/Images/images.jpg", friend1="http://tp4.sinaimg.cn/1849017127/50/40002000245/1", friend2="/testchengjiu;component/Images/user/U1.jpg", friend3="/testchengjiu;component/Images/user/U5.jpg", info="丢东西达到10次以上" + App.count + " / 10"}
             };
             listbox_chengjiu.ItemsSource = info;
         }

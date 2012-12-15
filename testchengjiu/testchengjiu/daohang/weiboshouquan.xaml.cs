@@ -35,35 +35,63 @@ namespace testchengjiu.daohang
 
         private void weibo_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            //AuthenticationView.OAuth2VerifyCompleted = (e1, e2, e3) => VerifyBack(e1, e2, e3);
-            //AuthenticationView.OBrowserCancelled = new EventHandler(cancleEvent);
-            weibolongin("user", "pass");
-            //ClientOAuth.GetAccessToken("8785169@163.com", "zhengyu19910808", (e1, e2, e3) =>
-            //{
-            //    if (true == e1)
-            //    {
-            //        Debug.WriteLine("accessToken:" + e3.accesssToken);
-            //        Debug.WriteLine("refleshToken:" + e3.refleshToken);
-            //        Debug.WriteLine("expriesIn:" + e3.expriesIn);
-            //        App.AccessToken = e3.accesssToken;
-            //        App.RefleshToken = e3.refleshToken;
-            //    }
-            //    else
-            //    {
-            //        if (e2.errCode == SdkErrCode.NET_UNUSUAL)
-            //        {
-            //            Debug.WriteLine("测试");
-            //        }
-            //        else if (e2.errCode == SdkErrCode.SERVER_ERR)
-            //            Debug.WriteLine("服务器返回错误，错误码:" + e2.specificCode);
-            //    }
-            //});
-            //其它通知事件..
-            //Deployment.Current.Dispatcher.BeginInvoke(() =>
-            //{
-            //    NavigationService.Navigate(new Uri("/WeiboSdk;component/PageViews/AuthenticationView.xaml", UriKind.Relative));
-            //});
-            
+            if (string.IsNullOrEmpty(SdkData.AppKey) || string.IsNullOrEmpty(SdkData.AppSecret)
+       || string.IsNullOrEmpty(SdkData.RedirectUri))
+            {
+                Deployment.Current.Dispatcher.BeginInvoke(() =>
+                {
+                    MessageBox.Show("请在中MainPage.xmal.cs的构造函数中设置自己的appkey、appkeysecret、RedirectUri.");
+                });
+                return;
+            }
+            AuthenticationView.OAuth2VerifyCompleted = (e1, e2, e3) => VerifyBack(e1, e2, e3);
+            AuthenticationView.OBrowserCancelled = new EventHandler(cancleEvent);
+            //其它通知事件...
+
+            Deployment.Current.Dispatcher.BeginInvoke(() =>
+            {
+                NavigationService.Navigate(new Uri("/WeiboSdk;component/PageViews/AuthenticationView.xaml"
+                    , UriKind.Relative));
+            });
+
+
+            ClientOAuth.GetAccessToken("username", "password", (e1, e2, e3) =>
+            {
+                if (true == e1)
+                {
+                    Debug.WriteLine("accessToken:" + e3.accesssToken);
+                    Debug.WriteLine("refleshToken:" + e3.refleshToken);
+                    Debug.WriteLine("expriesIn:" + e3.expriesIn);
+                }
+                else
+                {
+                    if (e2.errCode == SdkErrCode.NET_UNUSUAL)
+                    {
+                        Debug.WriteLine("测试");
+                    }
+                    else if (e2.errCode == SdkErrCode.SERVER_ERR)
+                        Debug.WriteLine("服务器返回错误，错误码:" + e2.specificCode);
+                }
+            });
+
+            ClientOAuth.RefleshAccessToken("服务器获取的reflesh_token", (e1, e2, e3) =>
+            {
+                if (true == e1)
+                {
+                    Debug.WriteLine("accessToken:" + e3.accesssToken);
+                    Debug.WriteLine("refleshToken:" + e3.refleshToken);
+                    Debug.WriteLine("expriesIn:" + e3.expriesIn);
+                }
+                else
+                {
+                    if (e2.errCode == SdkErrCode.NET_UNUSUAL)
+                    {
+                    }
+                    else if (e2.errCode == SdkErrCode.SERVER_ERR)
+                        Debug.WriteLine("服务器返回错误，错误码:" + e2.specificCode);
+                }
+            });
+
         }
 
         // 返回事件
@@ -84,21 +112,13 @@ namespace testchengjiu.daohang
                 {
                     App.AccessToken = response.accesssToken;
                     App.RefleshToken = response.refleshToken;
-                    //NavigationService.Navigate(new Uri("/daohang/weiboshouquan.xaml", UriKind.Relative));
                 }
 
                 Deployment.Current.Dispatcher.BeginInvoke(() =>
                 {
-                    //跳至内容分享功能
-                    //新建一个 SdkSend 实例
-                    SdkShare sdkSend = new SdkShare();
-                    //设置OAuth2.0的access_token
-                    sdkSend.AccessToken = App.AccessToken;
-                    sdkSend.Completed = SendCompleted;
-
-                    //调用Show方法展现页面的跳转
-                    sdkSend.Show();
-                    
+                    weibolongin("8785169", "8785169");
+                    NavigationService.Navigate(new Uri("/daohang/weiboshouquan.xaml",
+                        UriKind.Relative));
                 });
             }
             else if (errCode.errCode == SdkErrCode.NET_UNUSUAL)
@@ -119,28 +139,18 @@ namespace testchengjiu.daohang
                 Debug.WriteLine("Other Err.");
         }
 
-        void SendCompleted(object sender, SendCompletedEventArgs e)
-        {
-            if (e.IsSendSuccess)
-            {
-                MessageBox.Show("发送成功");
-                NavigationService.Navigate(new Uri("/WeiboSdk;component/PageViews/AuthenticationView.xaml", UriKind.Relative));
-            }
-            else
-                MessageBox.Show(e.Response, e.ErrorCode.ToString(), MessageBoxButton.OK);
-        }
 
         private void renren_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/main.xaml", UriKind.Relative));
+            MessageBox.Show("正在开发中......");
         }
 
         void weibolongin(string user, string password)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters.Add("username", "zhengyu");
+            parameters.Add("username", "8785169");
             parameters.Add("type", "weibo");
-            parameters.Add("token", "2.00toRIBC9G_4iC27d85d58ee03HlfL");
+            parameters.Add("token", App.AccessToken);
             PostClient proxy = new PostClient(parameters);
             proxy.DownloadStringCompleted += (sender, e) =>
             {
@@ -157,15 +167,7 @@ namespace testchengjiu.daohang
                             JObject userobj = JObject.Parse(e.Result);
                             if (userobj["info"].ToString() == "success")
                             {
-                             
-                                //if (((JObject)((JObject)userobj["detail"])["detail"]).ToString() == "[]")
-                                //{
-                                NavigationService.Navigate(new Uri("/mail.xaml", UriKind.Relative));
-                                //}
-                                //else
-                                //{
-                                //    NavigationService.Navigate(new Uri("/main.xaml", UriKind.Relative));
-                                //}
+                                MessageBox.Show("微博授权成功，可以进入应用了，也可以进行人人授权");
                             }
                         }
                         catch
@@ -180,6 +182,11 @@ namespace testchengjiu.daohang
         }
 
         private void Enter_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("暂未弄好");
+        }
+
+        private void enter_Click_1(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/main.xaml", UriKind.Relative));
         }

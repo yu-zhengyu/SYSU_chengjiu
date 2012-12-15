@@ -52,8 +52,9 @@
   <ItemGroup>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="Microsoft.Xna.Framework" />
     <Reference Include="Newtonsoft.Json.WindowsPhone">
       <HintPath>..\..\..\..\5D\fivedspace11\fivedspace\fivedspace\Bin\Debug\Newtonsoft.Json.WindowsPhone.dll</HintPath>
     </Reference>
@@ -69,6 +70,12 @@
     <Reference Include="WeiboSdk">
       <HintPath>..\..\..\..\5D\DiseaseCourse-edit\DiseaseCourse\DiseaseCourse\Bin\Debug\WeiboSdk.dll</HintPath>
     </Reference>
+    <Reference Include="WeiboSdkSample">
+      <HintPath>..\..\..\..\微博授权\WeiboSdkSample\Bin\Debug\WeiboSdkSample.dll</HintPath>
+    </Reference>
+    <Reference Include="WeiboService">
+      <HintPath>..\..\..\..\微博授权\WeiboSdkSample\Bin\Debug\WeiboService.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsPhonePostClient">
       <HintPath>..\..\..\..\5D\fivedspace11\fivedspace\fivedspace\Bin\Debug\WindowsPhonePostClient.dll</HintPath>
     </Reference>
@@ -77,6 +84,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="appbar\send.xaml.cs">
+      <DependentUpon>send.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="chengjiu_table\My_chengjiu.xaml.cs">
+      <DependentUpon>My_chengjiu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="chengjiu_table\SoundController.cs" />
     <Compile Include="daohang\chengjiu_congtent.xaml.cs">
       <DependentUpon>chengjiu_congtent.xaml</DependentUpon>
     </Compile>
@@ -85,6 +99,9 @@
     </Compile>
     <Compile Include="daohang\denglujiemian.xaml.cs">
       <DependentUpon>denglujiemian.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="daohang\login.xaml.cs">
+      <DependentUpon>login.xaml</DependentUpon>
     </Compile>
     <Compile Include="daohang\renrenshouquan.xaml.cs">
       <DependentUpon>renrenshouquan.xaml</DependentUpon>
@@ -100,13 +117,15 @@
     <Compile Include="data\chengjiu_infomation.cs" />
     <Compile Include="data\DataGetter.cs" />
     <Compile Include="data\fuguang_data.cs" />
+    <Compile Include="data\move_info.cs" />
+    <Compile Include="data\my_chengjiu_detile.cs" />
     <Compile Include="data\Test.cs" />
     <Compile Include="data\user.cs" />
+    <Compile Include="extra_page\movie_page.xaml.cs">
+      <DependentUpon>movie_page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="main.xaml.cs">
       <DependentUpon>main.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -115,6 +134,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="appbar\send.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="chengjiu_table\My_chengjiu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="daohang\chengjiu_congtent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -124,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="daohang\denglujiemian.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="daohang\login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,16 +170,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="main.xaml">
+    <Page Include="extra_page\movie_page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="main.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="chengjiu_table\qingchun.txt" />
     <Content Include="font\叶根友特楷简体.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -184,8 +216,22 @@
     <Content Include="icons\appbar.upload.rest.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\hub2.png" />
+    <Resource Include="Images\hub3.png" />
+    <Resource Include="Images\hub4.png" />
+    <Resource Include="Images\hub1.png" />
+    <Resource Include="Images\images.jpg" />
+    <Resource Include="Images\user\U1.jpg" />
+    <Resource Include="Images\user\U2.jpg" />
+    <Resource Include="Images\user\U3.jpg" />
+    <Resource Include="Images\user\U4.jpg" />
+    <Resource Include="Images\user\U5.jpg" />
+    <Resource Include="Images\user\U6.png" />
+    <Resource Include="Images\kenan.jpg" />
+    <Content Include="Sounds\isdone.wav" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -30,25 +30,19 @@ namespace testchengjiu.daohang
             List<chengjiu_detail> detail = new List<chengjiu_detail>()
             {
                 
-                new chengjiu_detail{Image="", meassage="三饭大王", isdone="/testchengjiu;component/Images/isdone.png"},
-                new chengjiu_detail{Image="", meassage="君臣侠", isdone="/testchengjiu;component/Images/isdone.png"},
-                new chengjiu_detail{Image="", meassage="咖啡厅老客户", isdone="/testchengjiu;component/Images/isdone.png"},
-                new chengjiu_detail{Image="", meassage="清真大王", isdone=""},
-                new chengjiu_detail{Image="", meassage="真。食堂的托", isdone=""},
-                new chengjiu_detail{Image="", meassage="衣食无忧", isdone=""}
+                new chengjiu_detail{Image="", meassage="折翼天使", isdone=""},
+                new chengjiu_detail{Image="", meassage="这辈子值了", isdone="/testchengjiu;component/Images/isdone.png"},
+                new chengjiu_detail{Image="", meassage="五道杠", isdone="/testchengjiu;component/Images/isdone.png"},
+                new chengjiu_detail{Image="", meassage="doublekill", isdone=""},
+                new chengjiu_detail{Image="", meassage="弹无虚发", isdone=""},
+                new chengjiu_detail{Image="", meassage="丝里逃生", isdone=""},
+                new chengjiu_detail{Image="", meassage="四面楚歌", isdone=""},
+                new chengjiu_detail{Image="", meassage="毅丝不挂", isdone=""}
             };
 
             listbox_chengjiu.ItemsSource = detail;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var a = ((chengjiu_detail)(((System.Windows.Controls.Primitives.Selector)(this.listbox_chengjiu)).SelectedItem)).meassage;
-            int i = 0;
-            //string a = this.listbox_chengjiu.SelectedItem.ToString();
-            //this.listbox_chengjiu.SelectedItem
-            
-        }
 
         private void chengjiu_SP_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {

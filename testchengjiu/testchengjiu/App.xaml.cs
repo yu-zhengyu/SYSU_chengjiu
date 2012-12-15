@@ -143,6 +143,8 @@ namespace testchengjiu
 
         public static string chengjiu_title;
         public static string chengjiu_list;
+        public static int count = 5;
+        public static string send_mess { set; get; }
 
         #endregion
 
